@@ -1,0 +1,28 @@
+#include <iostream>
+
+int main() {
+    int n;
+    std::cin >> n;
+    int sum = 0;
+    int max = INT_MIN;
+    int nomer;
+
+    for (int i = 0; i < n; i++) {
+        int x;
+        std::cin >> x;
+
+        if (x < 0) {
+            if (abs(x) % 7 == 0) {
+                sum += x;
+                if (x > max) {
+                    max = x;
+                    nomer = i;
+                }
+            }
+        }
+    }
+
+    std::cout << sum << std::endl << max << std::endl << number << std::endl;
+  
+    return 0;
+}
