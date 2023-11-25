@@ -4,7 +4,7 @@ int main() {
 	int n, m;
 	int proizved = 1;
 	int proizved2;
-	int max = -99999999;
+	int max = INT_MIN;
 	int k;
 	std::cin >> n >> m;
 	if (n > 100 || m > 100) {
