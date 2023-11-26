@@ -1,0 +1,67 @@
+#include <iostream>
+
+int is_cube(int n) {
+	double c = std::cbrt(n);
+	return c == floor(c);
+}
+
+bool is_prime(int n) {
+	if (n <= 1) {
+		return false;
+	}
+	else if (n == 2) {
+		return true;
+	}
+	else {
+		for (int i = 2; i * i <= n; i++) {
+			if (n % i == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+}
+
+int main() {
+	setlocale(LC_ALL, "Russian");
+	int n;
+	int mas[20'000];
+	std::cout << "Введите размер последовательности: " << std::endl;
+	std::cin >> n;
+	if (n > 10000) {
+		std::cout << "Слишком много";
+	}
+	else {
+		std::cout << "Введите элементы: " << std::endl;
+		for (int i = 0; i < n; i++) {
+			int x;
+			std::cin >> mas[i];
+		}
+
+		int i = 0;
+		while (i < n) {
+			if (is_prime(mas[i])) {
+				for (int j = i; j < n - 1; j++)
+					mas[j] = mas[j + 1];
+				n--;
+			}
+			else i++;
+		}
+
+		i = 0;
+		while (i < n) {
+			if (is_cube(mas[i])) {
+				for (int j = n; j > i; j--)
+					mas[j] = mas[j - 1];
+				n++;
+				i += 2;
+			}
+			i++;
+		}
+
+		for (int i = 0; i < n; i++) {
+			std::cout << mas[i] << " ";
+		}
+	}
+	return 0;
+}
