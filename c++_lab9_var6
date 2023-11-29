@@ -1,0 +1,70 @@
+#include <iostream>
+#define N_max 100
+
+void Read(int matrix[N_max][N_max], int& n, int& m) {
+    std::cin >> n >> m;
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < m; j++)
+            std::cin >> matrix[i][j];
+}
+
+void Write(int matrix[N_max][N_max], int n, int m) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++)
+            std::cout << matrix[i][j] << " ";
+        std::cout << std::endl;
+    }
+}
+
+bool isBiggestElement(int matrix[N_max][N_max], int biggestElem[N_max], int n, int m) {
+    for (int i = 0; i < n; i++) {
+        biggestElem[i] = matrix[i][0];
+        for (int j = 1; j < m; j++) {
+            if (biggestElem[i] < matrix[i][j]) {
+                biggestElem[i] = matrix[i][j];
+            }
+        }
+        if (biggestElem[i] != matrix[i][i])
+            return false;
+    }
+    return true;
+}
+
+void replaceElemsWithNull(int matrix[N_max][N_max], int n, int m, int proizved) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            int a = 1;
+            while (a != 0) {
+                if (a % 10 == 0 or matrix[i][j] % 10 == 0) {
+                    matrix[i][j] = proizved;
+                    a = 0;
+                }
+                else {
+                    a = matrix[i][j];
+                    a /= 10;
+                }
+            }
+        }
+    }
+}
+
+int main() {
+    int n, m;
+    int matrix[N_max][N_max];
+    //vvod
+    Read(matrix, n, m);
+
+    //определить является ли элемент диагонали наибольшим в строке и заменить 
+    //элементы матрицы содержащие 0
+    int biggestElem[N_max];
+    if (isBiggestElement(matrix, biggestElem, n, m)) {
+        int proizved = 1;
+        for (int i = 0; i < n; i++) {
+            proizved *= matrix[i][i];
+        }
+        replaceElemsWithNull(matrix, n, m, proizved);
+    }
+    //vivod
+    Write(matrix, n, m);
+    return 0;
+}
