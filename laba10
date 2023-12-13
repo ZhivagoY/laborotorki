@@ -1,0 +1,52 @@
+/*1)Средства изменения длины : resize, push_back и pop_back.
+2.1)Capacity и size: Capacity и size - это разные понятия. Capacity - это максимальное
+количество элементов, которое может вместить вектор, а size - это текущее количество элементов
+в векторе. Если size больше, чем capacity, то вектор должен быть увеличен, чтобы вмещать новые элементы.
+2.2)Функция shrink_to_fit уменьшает размер вектора до минимально необходимого, удаляя неиспользуемые
+элементы. Это может улучшить производительность, если вектор содержит много неиспользуемых элементов.
+2.3)Функция resize принимает размер в качестве аргумента и может увеличить или уменьшить размер вектора.
+2.4)Функция reserve увеличивает емкость вектора, чтобы он мог вместить
+указанное количество элементов без изменения своего размера.
+3)Знаки < и > обозначают тип данных для чисел, которые будут храниться в векторе. Например,
+std::vector<int> даёт вектор с целыми числами, а std::vector<double>, вектор с десятичными числами.
+5.1)Функция at возвращает ссылку на элемент вектора по его индексу, и проверяет,  находится ли индекс
+в допустимом диапазоне. Если индекс выходит за пределы , то выдаётся ошибка  std::out_of_range.
+5.2)Функция [] также возвращает ссылку на элемент по индексу, но если индекс выходит за пределы вектора,
+то она просто возвращает пустой элемент.
+5.3)Так безопаснее работать с векторами. Если случайно используется неправильный индекс для функции [],
+то ошибку можно не заметить. А если используется at, то ошибка будет обнаружена раньше.*/
+//Демонстрация работы push_back, erase, insert, clear.(Пункт номер 4)
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> numbers;
+    cout << "Give me some element(0 to stop):" << endl;
+
+    int input;
+    //пункт 1
+    do {
+        cin >> input;
+        numbers.push_back(input);
+    } while (input != 0);
+
+    cout << "You gave me " << numbers.size() << " elements in vector" << endl;
+    //пункт 2
+    numbers.erase(numbers.begin() + 2); // Удаляет третий элемент
+    std::cout << "What happend after using erase:" << std::endl;
+    for (const auto& number : numbers) {
+        std::cout << number << " ";
+    }
+    std::cout << "" << std::endl;
+    //пункт 3
+    numbers.insert(numbers.begin(), 4); // Вставляет число 4 в начало вектора
+    std::cout << "What happend after using insert:" << std::endl;
+    for (const auto& number : numbers)
+        std::cout << number << ' ';
+    std::cout << "" << std::endl;
+    numbers.clear();
+    std::cout << "What happend after using clear:" << std::endl;
+    for (const auto& number : numbers)
+        std::cout << number << ' ';
+}
