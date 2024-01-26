@@ -6,7 +6,7 @@ private:
     float side1;
     float side2;
     float side3;
-    bool isTriangle() const {
+    bool isTriangle() {
         return (side1 + side2 > side3) && (side1 + side3 > side2) && (side2 + side3 > side1);
     }
 public:
@@ -15,10 +15,6 @@ public:
             std::cout << "Wrong sides" << std::endl;
         }
     }
-
-    float getSide1() const { return side1; }
-    float getSide2() const { return side2; }
-    float getSide3() const { return side3; }
 
     float findPerimeter() {
         return side1 + side2 + side3;
