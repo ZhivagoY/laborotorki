@@ -20,10 +20,10 @@ public:
     float getSide2() const { return side2; }
     float getSide3() const { return side3; }
 
-    float findPerimeter() const {
+    float findPerimeter() {
         return side1 + side2 + side3;
     }
-    float findS() const {
+    float findS() {
         float p = findPerimeter() / 2; // полупериметр
         return std::sqrt(p * (p - side1) * (p - side2) * (p - side3)); //нашли площадь по формуле Герона
     }
