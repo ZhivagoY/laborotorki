@@ -1,0 +1,10 @@
+^C:\USERS\SYSTEMX\DOCUMENTS\GITHUB\SFML_SAMPLE\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/SystemX/Documents/GitHub/sfml_sample -BC:/Build/laba4 --check-stamp-file C:/Build/laba4/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
