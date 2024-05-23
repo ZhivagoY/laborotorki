@@ -1,3 +1,0 @@
-C:/Build/laba4/CMakeFiles/sfml_sample.dir
-C:/Build/laba4/CMakeFiles/ALL_BUILD.dir
-C:/Build/laba4/CMakeFiles/ZERO_CHECK.dir

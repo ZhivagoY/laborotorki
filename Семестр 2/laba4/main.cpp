@@ -11,7 +11,7 @@ int main()
     sf::CircleShape triangles[N];
     sf::CircleShape triangle(50, 3); //создание одного треугольника
 
-    
+
     for (int i = 0; i < N; i++) { // создание кругов
         circles[i].setRadius(50.f);
         circles[i].setFillColor(sf::Color::Magenta);
